@@ -105,3 +105,28 @@ in a + b
 -- With predicate 
 [bmi | (w, h) <- [(60, 1.7)], let bmi = w / h ^ 2, bmi > 25.0]
 ```
+
+## `case`
+式
+コード中のどこでもパターンマッチを使って、値を評価できる:
+
+```
+case [expression] of pattern -> result
+                     pattern -> result
+                     pattern -> result
+```
+
+```haskell
+head'' :: [a] -> a
+head'' xs = case xs of []    -> error "empry list"
+                       (x:_) -> x
+```
+
+これは関数の引数に対するパターンマッチと同じ:
+
+```haskell
+head' :: [a] -> a
+head' []    = error "empty list"
+head' (x:_) = x
+```
+
